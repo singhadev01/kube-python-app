@@ -60,16 +60,16 @@ App Version V2
 
 App version will change between v2 and v2
 
-Using info End Point
+Using info End Point and curl command
 
 $ curl -s http://localhost:9999/info
 App Version V2
-ajay*singh_local@DESKTOP-I9D9ORL MINGW64 /c/users/ajay*/python/flask
+
 $ curl -s http://localhost:9999/info
 App Version V2
-ajay*singh_local@DESKTOP-I9D9ORL MINGW64 /c/users/ajay*/python/flask
+
 $ curl -s http://localhost:9999/info
 App Version V1
-ajay*singh_local@DESKTOP-I9D9ORL MINGW64 /c/users/ajay*/python/flask
 
 Using version End Point in browser if u keep refreshing it will alternate between Blue and Green
+http://127.0.0.1:9999/version
