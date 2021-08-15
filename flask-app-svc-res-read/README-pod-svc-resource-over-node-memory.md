@@ -33,3 +33,49 @@ flaskapi-pod1 0/1 Pending 0 4s
 $ kubectl get events | tail -5
 59s Warning FailedScheduling pod/flaskapi-pod1 0/1 nodes are available: 1 Insufficient memory.
 37s Warning FailedScheduling pod/flaskapi-pod1 0/1 nodes are available: 1 Insufficient memory.
+
+C:\Users\ajay\_\python\flask\kube-python-app\flask-app-svc-res-read>kubectl describe pod flaskapi-pod1
+Name: flaskapi-pod1
+Namespace: default
+Priority: 0
+Node: <none>
+Labels: app=flaskapi
+version=v1
+Annotations: <none>
+Status: Pending
+IP:
+IPs: <none>
+Containers:
+flaskapi:
+Image: ajaysinghdocker/flask-app
+Port: 9999/TCP
+Host Port: 0/TCP
+Limits:
+cpu: 1m
+memory: 6000Mi
+Requests:
+cpu: 1m
+memory: 2000Mi
+Environment:
+APP_VERSION: V1
+Mounts:
+/var/run/secrets/kubernetes.io/serviceaccount from default-token-sjmxx (ro)
+Conditions:
+Type Status
+PodScheduled False
+Volumes:
+default-token-sjmxx:
+Type: Secret (a volume populated by a Secret)
+SecretName: default-token-sjmxx
+Optional: false
+QoS Class: Burstable
+Node-Selectors: <none>
+Tolerations: node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+Type Reason Age From Message
+
+---
+
+Warning FailedScheduling 5m28s default-scheduler 0/1 nodes are available: 1 Insufficient memory.
+Warning FailedScheduling 5m28s default-scheduler 0/1 nodes are available: 1 Insufficient memory.
