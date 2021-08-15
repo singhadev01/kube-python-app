@@ -20,3 +20,16 @@ This time, the status of the Pod is Pending. Kubernetes could not place it anywh
 Even though memory requests are associated with containers, it often makes sense to translate them into Pod requirements. We can say that the requested memory of a Pod is the sum of the requests of all the containers that form it. In our case, the Pod has only one container, so the requested memory for the Pod and the container are equal. The same can be said for limits.
 
 During the scheduling process, Kubernetes sums the requests of a Pod and looks for a node that has enough available memory and CPU. If Pod’s request cannot be satisfied, it is placed in the pending state in the hope that resources will be freed on one of the nodes, or that a new server will be added to the cluster.
+
+C:\Users\ajay\_\python\flask\kube-python-app\flask-app-svc-res-read>kubectl apply -f pod-svc-resource-over-node-memory.yml
+pod/flaskapi-pod1 created
+service/flask-service unchanged
+service/flask-service-node-port unchanged
+
+C:\Users\ajay\_\python\flask\kube-python-app\flask-app-svc-res-read>kubectl get pods
+NAME READY STATUS RESTARTS AGE
+flaskapi-pod1 0/1 Pending 0 4s
+
+$ kubectl get events | tail -5
+59s Warning FailedScheduling pod/flaskapi-pod1 0/1 nodes are available: 1 Insufficient memory.
+37s Warning FailedScheduling pod/flaskapi-pod1 0/1 nodes are available: 1 Insufficient memory.
